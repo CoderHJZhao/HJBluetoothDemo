@@ -6,7 +6,7 @@
 
 ## 一.准备工作
 - 1.搭建UI
-![图1](./bleIma/Snip20150928_1.png)
+![图1](./bleImage/Snip20150928_1.png)
 
 - 2.拖线
 
@@ -54,11 +54,11 @@
 - 点击图片从相册中选择一张显示本机
     * 可以修改imaV为Btn,也可以为imaV添加手势
         * 1.修改imageView的用户交互
-    ![图2](./bleIma/Snip20150928_2.png)
+    ![图2](./bleImage/Snip20150928_2.png)
         * 2.添加手势到图片上
-    ![图3](./bleImage/Snip20150928_3.png)
+    ![图3](./bleImagege/Snip20150928_3.png)
         * 3.拖出手势的响应事件
-    ![图4](./bleIma/Snip20150928_4.png)
+    ![图4](./bleImage/Snip20150928_4.png)
         * 4.完善相册选择图片代码
 
 ```objc
@@ -272,7 +272,7 @@
 
 #### 3.连接外设
 - 扫描手环,打印结果
-![图4.2.1](./bleIma/Snip20150928_5.png)
+![图4.2.1](./bleImage/Snip20150928_5.png)
 - 根据打印结果
 
 ```objc
@@ -482,7 +482,7 @@
 # BLE-periphral外设模式流程
 
 #### 之前在基础知识介绍过BLE应用的两种流程,如图:
-![图4.1.1](./bleIma/ble_01.png)
+![图4.1.1](./bleImage/ble_01.png)
 
 - central模式用的都是左边的类，而peripheral模式用的是右边的类
 
