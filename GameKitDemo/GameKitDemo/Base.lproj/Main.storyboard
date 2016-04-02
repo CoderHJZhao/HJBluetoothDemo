@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svl-5l-42Z">
+                                <rect key="frame" x="200" y="120" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.0" green="0.65490196079999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="f2X-tJ-BHh"/>
+                                    <constraint firstAttribute="width" constant="200" id="hz5-EV-BCP"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="selectPhotoFromLibrary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QUS-Sp-bWk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2L-uP-ty7">
+                                <rect key="frame" x="70" y="370" width="100" height="35"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="mHf-s9-6gS"/>
+                                    <constraint firstAttribute="width" constant="100" id="okI-Gf-hTR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="建立连接"/>
+                                <connections>
+                                    <action selector="buildConnect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ADZ-p2-b0Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieZ-xi-X5D">
+                                <rect key="frame" x="430" y="370" width="100" height="35"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="发送数据"/>
+                                <connections>
+                                    <action selector="sendData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yL5-rh-oC0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s2L-uP-ty7" firstAttribute="width" secondItem="ieZ-xi-X5D" secondAttribute="width" id="9cD-rS-LHV"/>
+                            <constraint firstItem="ieZ-xi-X5D" firstAttribute="top" secondItem="svl-5l-42Z" secondAttribute="bottom" constant="50" id="LbP-4Q-j3p"/>
+                            <constraint firstItem="s2L-uP-ty7" firstAttribute="height" secondItem="ieZ-xi-X5D" secondAttribute="height" id="QDY-f3-XkG"/>
+                            <constraint firstItem="s2L-uP-ty7" firstAttribute="top" secondItem="svl-5l-42Z" secondAttribute="bottom" constant="50" id="cFC-8z-rMJ"/>
+                            <constraint firstItem="s2L-uP-ty7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="pRD-5W-K93"/>
+                            <constraint firstItem="svl-5l-42Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qS6-Ib-mGW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ieZ-xi-X5D" secondAttribute="trailing" constant="50" id="s5d-uD-hkq"/>
+                            <constraint firstItem="svl-5l-42Z" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="wrA-N2-tUs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageBtn" destination="svl-5l-42Z" id="Hik-UN-ybv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
