@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1fF-8e-Ye9">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6z-lO-we0">
+                                <rect key="frame" x="200" y="120" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.92156863212585449" green="0.34509804844856262" blue="0.32941177487373352" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Oil-Nk-YXa"/>
+                                    <constraint firstAttribute="height" constant="50" id="R9A-gG-Lkt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="中心管理设计模式">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="centralManager:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JwV-gS-sWc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmm-el-utm">
+                                <rect key="frame" x="200" y="200" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.97647058963775635" green="0.61176472902297974" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1RL-VG-7ig"/>
+                                    <constraint firstAttribute="height" constant="50" id="Eam-GO-3LW"/>
+                                </constraints>
+                                <state key="normal" title="外设管理设计模式">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="peripheralManager:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fj4-Lc-xwO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e6z-lO-we0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="HDQ-ck-EKM"/>
+                            <constraint firstItem="e6z-lO-we0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WQE-cm-sd9"/>
+                            <constraint firstItem="hmm-el-utm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XBd-FH-QuO"/>
+                            <constraint firstItem="hmm-el-utm" firstAttribute="top" secondItem="e6z-lO-we0" secondAttribute="bottom" constant="30" id="vXe-ij-bH9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lAx-DX-86v"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1152" y="368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4hG-NO-kYn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1fF-8e-Ye9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fim-kC-reM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Tci-Fb-uHj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cal-Wl-bjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="340" y="1028"/>
+        </scene>
+    </scenes>
+</document>
