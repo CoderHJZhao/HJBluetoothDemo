@@ -424,7 +424,7 @@
 
 ```objc
 // 5.将数据写入特征(自定义方法,为了看的更清楚,没别的意思)
-- (void)yf_peripheral:(CBPeripheral *)peripheral writeData:(NSData *)data forCharacteristic:(CBCharacteristic *)characteristic
+- (void)zhj_peripheral:(CBPeripheral *)peripheral writeData:(NSData *)data forCharacteristic:(CBCharacteristic *)characteristic
 {
     /*
     typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
@@ -455,13 +455,13 @@
 
 ```objc
 // 设置通知
-- (void)yf_peripheral:(CBPeripheral *)peripheral setNotifyForCharacteristic:(CBCharacteristic *)characteristic
+- (void)zhj_peripheral:(CBPeripheral *)peripheral setNotifzhjorCharacteristic:(CBCharacteristic *)characteristic
 {
     // 设置通知, 数据会进入 peripheral:didUpdateValueForCharacteristic:error:方法
     [peripheral setNotifyValue:YES forCharacteristic:characteristic];
 }
 // 取消通知
-- (void)yf_peripheral:(CBPeripheral *)peripheral cancelNotifyForCharacteristic:(CBCharacteristic *)characteristic
+- (void)zhj_peripheral:(CBPeripheral *)peripheral cancelNotifzhjorCharacteristic:(CBCharacteristic *)characteristic
 {
     [peripheral setNotifyValue:NO forCharacteristic:characteristic];
 }
@@ -471,7 +471,7 @@
 
 ```objc
 // 7.断开连接
-- (void)yf_cMgr:(CBCentralManager *)cMgr stopScanAndDisConnectWithPeripheral:(CBPeripheral *)peripheral
+- (void)zhj_cMgr:(CBCentralManager *)cMgr stopScanAndDisConnectWithPeripheral:(CBPeripheral *)peripheral
 {
     // 停止扫描
     [cMgr stopScan];
@@ -507,24 +507,24 @@
 ```objc
 #import <CoreBluetooth/CoreBluetooth.h>
 @interface XMGBLEPeripheralViewController () <CBPeripheralManagerDelegate>
-@property (nonatomic, strong) CBPeripheralManager *pMgr; /**< 外设管理者 */
+@property (nonatomic, strong) CBPeripheralManager *centerMgr; /**< 外设管理者 */
 @end
 
 @implementation XMGBLEPeripheralViewController
 // 懒加载
-- (CBPeripheralManager *)pMgr
+- (CBPeripheralManager *)centerMgr
 {
-    if (!_pMgr) {
-        _pMgr = [[CBPeripheralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue()];
+    if (!_centerMgr) {
+        _centerMgr = [[CBPeripheralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue()];
     }
-    return _pMgr;
+    return _centerMgr;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 调用get方法初始化,初始化后CBPeripheralManager状态改变会调用代理方法peripheralManagerDidUpdateState:
     // 模拟器永远也不会是CBPeripheralManagerStatePoweredOn状态
-    [self pMgr];
+    [self centerMgr];
 }
 ```
 
@@ -542,7 +542,7 @@
         // 提示设备成功打开
         [SVProgressHUD showSuccessWithStatus:@"xmg设备打开成功~"];
         // 配置各种服务入CBPeripheralManager
-        [self yf_setupPMgr];
+        [self zhj_setupcenterMgr];
     }else
     {
         // 提示设备打开失败
@@ -551,7 +551,7 @@
 }
 
 #pragma mark - 私有方法
-- (void)yf_setupPMgr
+- (void)zhj_setupcenterMgr
 {
     // 特征描述的UUID
     CBUUID *characteristicUserDescriptionUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
@@ -597,8 +597,8 @@
 
     // 添加服务进外设管理者
     // 添加操作会触发代理方法peripheralManager:didAddService:error:
-    [self.pMgr addService:ser1];
-    [self.pMgr addService:ser2];
+    [self.centerMgr addService:ser1];
+    [self.centerMgr addService:ser2];
 }
 ```
 
@@ -641,7 +641,7 @@
     return _servieces;
 }
 #pragma mark - 私有方法
-- (void)yf_setupPMgr
+- (void)zhj_setupcenterMgr
 {
     ...
 
@@ -660,7 +660,7 @@
     // 添加操作会触发代理方法peripheralManager:didAddService:error:
     if (self.servieces.count) {
         for (CBMutableService *ser in self.servieces) {
-            [self.pMgr addService:ser];
+            [self.centerMgr addService:ser];
         }
     }
 }
@@ -682,10 +682,10 @@
 
         request.value = data;
         // 对请求成功做出响应
-        [self.pMgr respondToRequest:request withResult:CBATTErrorSuccess];
+        [self.centerMgr respondToRequest:request withResult:CBATTErrorSuccess];
     }else
     {
-        [self.pMgr respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
+        [self.centerMgr respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
     }
 }
 // 外设收到写的请求,然后读request的值,写给特征
@@ -699,10 +699,10 @@
         CBMutableCharacteristic *mChar = (CBMutableCharacteristic *)request.characteristic;
         mChar.value = data;
         // 对请求成功做出响应
-        [self.pMgr respondToRequest:request withResult:CBATTErrorSuccess];
+        [self.centerMgr respondToRequest:request withResult:CBATTErrorSuccess];
     }else
     {
-        [self.pMgr respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
+        [self.centerMgr respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
     }
 }
 
@@ -714,7 +714,7 @@
     NSLog(@"%s, line = %d, 订阅了%@的数据", __FUNCTION__, __LINE__, characteristic.UUID);
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0
                                                       target:self
-                                                    selector:@selector(yf_sendData:)
+                                                    selector:@selector(zhj_sendData:)
                                                     userInfo:characteristic
                                                      repeats:YES];
 
@@ -723,7 +723,7 @@
     /* 另一种方法 */
 //    NSTimer *testTimer = [NSTimer timerWithTimeInterval:2.0
 //                                                 target:self
-//                                               selector:@selector(yf_sendData:)
+//                                               selector:@selector(zhj_sendData:)
 //                                               userInfo:characteristic
 //                                                repeats:YES];
 //    [[NSRunLoop currentRunLoop] addTimer:testTimer forMode:NSDefaultRunLoopMode];
@@ -743,7 +743,7 @@
 }
 
 // 计时器每隔两秒调用的方法
-- (BOOL)yf_sendData:(NSTimer *)timer
+- (BOOL)zhj_sendData:(NSTimer *)timer
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yy:MM:dd:HH:mm:ss";
@@ -752,7 +752,7 @@
     NSLog(@"now = %@", now);
 
     // 执行回应central通知数据
-    return  [self.pMgr updateValue:[now dataUsingEncoding:NSUTF8StringEncoding]
+    return  [self.centerMgr updateValue:[now dataUsingEncoding:NSUTF8StringEncoding]
          forCharacteristic:timer.userInfo
       onSubscribedCentrals:nil];
 }
